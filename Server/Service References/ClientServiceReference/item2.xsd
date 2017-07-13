@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RayTracer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RayTracer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8734/ClientService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8734/ClientService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Scene">
+    <xs:sequence>
+      <xs:element name="Background" nillable="true" type="tns:Background" />
+      <xs:element name="Camera" nillable="true" type="tns:Camera" />
+      <xs:element name="Lights" nillable="true" type="tns:ArrayOfLight" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="Shapes" nillable="true" type="q1:ArrayOfanyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Scene" nillable="true" type="tns:Scene" />
+  <xs:complexType name="Background">
+    <xs:sequence>
+      <xs:element name="Ambience" type="xs:double" />
+      <xs:element name="Color" nillable="true" type="tns:Color" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Background" nillable="true" type="tns:Background" />
+  <xs:complexType name="Color">
+    <xs:sequence>
+      <xs:element name="Blue" type="xs:double" />
+      <xs:element name="Green" type="xs:double" />
+      <xs:element name="Red" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Color" nillable="true" type="tns:Color" />
+  <xs:complexType name="Camera">
+    <xs:sequence>
+      <xs:element name="Equator" nillable="true" type="tns:Vector" />
+      <xs:element name="LookAt" nillable="true" type="tns:Vector" />
+      <xs:element name="Position" nillable="true" type="tns:Vector" />
+      <xs:element name="Screen" nillable="true" type="tns:Vector" />
+      <xs:element name="Up" nillable="true" type="tns:Vector" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Camera" nillable="true" type="tns:Camera" />
+  <xs:complexType name="Vector">
+    <xs:sequence>
+      <xs:element name="x" type="xs:double" />
+      <xs:element name="y" type="xs:double" />
+      <xs:element name="z" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Vector" nillable="true" type="tns:Vector" />
+  <xs:complexType name="ArrayOfLight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Light" nillable="true" type="tns:Light" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLight" nillable="true" type="tns:ArrayOfLight" />
+  <xs:complexType name="Light">
+    <xs:sequence>
+      <xs:element name="Color" nillable="true" type="tns:Color" />
+      <xs:element name="Position" nillable="true" type="tns:Vector" />
+      <xs:element name="strength" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Light" nillable="true" type="tns:Light" />
+  <xs:complexType name="SphereShape">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseShape">
+        <xs:sequence>
+          <xs:element name="R" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SphereShape" nillable="true" type="tns:SphereShape" />
+  <xs:complexType name="BaseShape">
+    <xs:sequence>
+      <xs:element name="material" nillable="true" type="xs:anyType" />
+      <xs:element name="position" nillable="true" type="tns:Vector" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseShape" nillable="true" type="tns:BaseShape" />
+  <xs:complexType name="ChessboardMaterial">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseMaterial">
+        <xs:sequence>
+          <xs:element name="ColorEven" nillable="true" type="tns:Color" />
+          <xs:element name="ColorOdd" nillable="true" type="tns:Color" />
+          <xs:element name="Density" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChessboardMaterial" nillable="true" type="tns:ChessboardMaterial" />
+  <xs:complexType name="BaseMaterial">
+    <xs:sequence>
+      <xs:element name="gloss" type="xs:double" />
+      <xs:element name="reflection" type="xs:double" />
+      <xs:element name="refraction" type="xs:double" />
+      <xs:element name="transparency" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseMaterial" nillable="true" type="tns:BaseMaterial" />
+  <xs:complexType name="PlaneShape">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseShape">
+        <xs:sequence>
+          <xs:element name="D" type="xs:double" />
+          <xs:element name="OddColor" nillable="true" type="tns:Color" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PlaneShape" nillable="true" type="tns:PlaneShape" />
+  <xs:complexType name="SolidMaterial">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseMaterial">
+        <xs:sequence>
+          <xs:element name="color" nillable="true" type="tns:Color" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SolidMaterial" nillable="true" type="tns:SolidMaterial" />
+  <xs:complexType name="RayTracer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AntiAliasing" type="tns:AntiAliasing" />
+      <xs:element minOccurs="0" name="RenderDiffuse" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RenderHighlights" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RenderReflection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RenderRefraction" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RenderShadow" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RayTracer" nillable="true" type="tns:RayTracer" />
+  <xs:simpleType name="AntiAliasing">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Quick" />
+      <xs:enumeration value="Low">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Medium">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="High">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="VeryHigh">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AntiAliasing" nillable="true" type="tns:AntiAliasing" />
+</xs:schema>

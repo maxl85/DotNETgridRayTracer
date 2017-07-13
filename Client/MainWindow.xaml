@@ -1,0 +1,20 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="buttonn1" Content="Button" HorizontalAlignment="Left" Margin="256,94,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="butConnect" Content="Connect" HorizontalAlignment="Left" Margin="256,55,0,0" VerticalAlignment="Top" Width="75" Click="butConnect_Click"/>
+        <ProgressBar HorizontalAlignment="Left" Height="84" Margin="-80,132,0,0" VerticalAlignment="Top" Width="268" RenderTransformOrigin="0.5,0.5">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+
+    </Grid>
+</Window>

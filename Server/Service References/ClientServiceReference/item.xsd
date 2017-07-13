@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8734/ClientService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RayTracer" />
+  <xs:import schemaLocation="http://localhost:8734/ClientService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+  <xs:import schemaLocation="http://localhost:8734/ClientService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:element name="Perfomance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RayTracer" minOccurs="0" name="scene" nillable="true" type="q1:Scene" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="viewport" type="q2:Rectangle" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RayTracer" minOccurs="0" name="raytracer" nillable="true" type="q3:RayTracer" />
+        <xs:element minOccurs="0" name="step" type="xs:int" />
+        <xs:element minOccurs="0" name="number" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PerfomanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="PerfomanceResult" nillable="true" type="q4:TupleOfdoubleint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckConnection">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckConnectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckConnectionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RayTraceRows">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RayTracer" minOccurs="0" name="scene" nillable="true" type="q5:Scene" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="viewport" type="q6:Rectangle" />
+        <xs:element minOccurs="0" name="startRow" type="xs:int" />
+        <xs:element minOccurs="0" name="numberOfRowsToTrace" type="xs:int" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RayTracer" minOccurs="0" name="raytracer" nillable="true" type="q7:RayTracer" />
+        <xs:element minOccurs="0" name="numberOfRange" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RayTraceRowsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="RayTraceRowsResult" nillable="true" type="q8:TupleOfBitmapintRayTracerintdateTimeJKj7DaPs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
